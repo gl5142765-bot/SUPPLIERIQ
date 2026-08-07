@@ -111,7 +111,7 @@ If you want to explore the full pipeline, you can open `SUPPLIER IQ FINAL.ipynb`
 
 ## Visuals
 
-_(<img width="978" height="774" alt="image" src="https://github.com/user-attachments/assets/20f44079-e542-4ec2-881d-ca5bb98b0200" />
+<img width="978" height="774" alt="image" src="https://github.com/user-attachments/assets/20f44079-e542-4ec2-881d-ca5bb98b0200" />
 <img width="1067" height="410" alt="image" src="https://github.com/user-attachments/assets/a3b76262-8b56-4c77-b906-6f6551ce4dba" />
 <img width="985" height="818" alt="image" src="https://github.com/user-attachments/assets/2c6adeb0-8215-4c59-8a45-98ec61eb6a2e" />
 
