@@ -1,8 +1,6 @@
-SupplierIQ – AI-Powered Supplier Risk Intelligence Platform
+## SupplierIQ – AI-Powered Supplier Risk Intelligence Platform
 
-
-Overview
-SupplierIQ is a machine learning project that predicts supplier risk from structured business data. The goal is to help procurement teams identify high-risk suppliers before delays, quality issues, compliance problems, or instability affect operations.
+SupplierIQ is a machine learning project that predicts supplier risk from structured business data...
 .
 
 The project turns raw supplier records into:
