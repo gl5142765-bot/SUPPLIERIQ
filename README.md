@@ -1,6 +1,8 @@
 SupplierIQ – AI-Powered Supplier Risk Intelligence Platform
+
+
 Overview
-SupplierIQ is a machine learning project that predicts supplier risk from structured business data. The goal is to help procurement teams identify high-risk suppliers before delays, quality issues, compliance problems, or instability affect operations 
+SupplierIQ is a machine learning project that predicts supplier risk from structured business data. The goal is to help procurement teams identify high-risk suppliers before delays, quality issues, compliance problems, or instability affect operations.
 .
 
 The project turns raw supplier records into:
@@ -17,7 +19,7 @@ supplier_risk_dataset.csv – original dataset.
 supplier_risk_cleaned.csv – cleaned and preprocessed dataset 
 .
 
-SupplierIQ_testing.ipynb – main notebook with EDA, preprocessing, modeling, tuning, and evaluation 
+SUPPLIER IQ FINAL.ipynb – main notebook with EDA, preprocessing, modelling, tuning, and evaluation 
 .
 
 README.md – project documentation.
@@ -96,7 +98,7 @@ False negatives (risky suppliers missed).
 
 True positives (risky suppliers correctly classified).
 
-These metrics indicate that the model generalizes well to unseen suppliers and maintains a good balance between catching risky suppliers and limiting false alarms.
+These metrics indicate that the model generalises well to unseen suppliers and maintains a good balance between catching risky suppliers and limiting false alarms.
 
 Business Interpretation
 For procurement teams:
@@ -111,38 +113,33 @@ SupplierIQ supports a proactive risk management workflow by giving teams a data-
 .
 
 How to Run
-Create a Python environment (e.g., using venv or conda).
+Create a Python environment (e.g. venv or conda).
 
 Install dependencies:
 
 bash
 pip install -r requirements.txt
-Open the notebook:
+Run the prediction script (example):
 
 bash
-jupyter notebook SupplierIQ_testing.ipynb
-Run the cells step by step:
+python predict_example.py
+This script:
 
-Load and explore the dataset.
+loads the trained model from supply-model.joblib,
 
-Apply cleaning and preprocessing.
+applies the same preprocessing steps used during training,
 
-Train baseline models.
+outputs a supplier risk prediction (low risk / high risk) and probability.
 
-Train Random Forest and perform cross-validation.
 
-Tune Logistic Regression hyperparameters.
 
-Evaluate the final model and review metrics.
+<img width="978" height="774" alt="image" src="https://github.com/user-attachments/assets/4e22e307-59f3-4835-aaca-1bf494936330" />
+<img width="1067" height="410" alt="image" src="https://github.com/user-attachments/assets/922fdfb3-a3c5-4980-9032-ab23cd77b8c0" />
+<img width="985" height="818" alt="image" src="https://github.com/user-attachments/assets/8d79a9c5-16c7-4871-8184-3106b6c97bbe" />
 
-Next Steps
-The project is designed to be extended into:
 
-A FastAPI backend that exposes the model via a REST API.
-
-A Streamlit dashboard for interactive supplier risk exploration.
-
-AWS deployment (e.g., EC2) for hosting the full application 
-.
-
-These next phases will turn SupplierIQ from a notebook-based model into a production-ready, resume-worthy ML product.
+Project status and next steps (for conclusion)
+The end-to-end ML pipeline is complete: data cleaning, feature engineering, baseline models, Random Forest, tuning, and final evaluation.
+The tuned Logistic Regression model is saved as supply-model. joblib and can be loaded in scripts or APIs without notebooks.
+A Streamlit dashboard is under development to visualise supplier risk, feature values, and model outputs.
+AWS deployment (e.g. EC2) is in progress so that SupplierIQ can be accessed as a web application by procurement teams.
