@@ -15,8 +15,9 @@ st.set_page_config(
 
 st.title("SupplierIQ – Supplier Risk Prediction")
 st.markdown(
-    "Enter supplier performance and risk metrics below. "
-    "The app will call the backend API and show the predicted risk score and band."
+    "Estimate how risky a supplier is based on its performance and reliability. "
+    "Set the metrics below to see the predicted risk level."
+)
 )
 
 # -----------------------------
