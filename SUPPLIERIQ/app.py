@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import pandas as pd  
 
 # -----------------------------
 # Config
@@ -11,13 +12,14 @@ st.set_page_config(
     page_title="SupplierIQ – Risk Dashboard",
     page_icon="📊",
     layout="centered",
+    initial_sidebar_state="auto",
+
 )
 
 st.title("SupplierIQ – Supplier Risk Prediction")
 st.markdown(
     "Estimate how risky a supplier is based on its performance and reliability. "
     "Set the metrics below to see the predicted risk level."
-)
 )
 
 # -----------------------------
@@ -100,6 +102,7 @@ with col2:
 # -----------------------------
 
 st.markdown("---")
+
 if st.button("Predict supplier risk"):
     payload = {
         "financial_stability_score": financial_stability_score,
@@ -114,6 +117,7 @@ if st.button("Predict supplier risk"):
 
     try:
         response = requests.post(API_URL, json=payload)
+
         if response.status_code == 200:
             data = response.json()
             risk_score = data.get("risk_score")
@@ -121,13 +125,37 @@ if st.button("Predict supplier risk"):
             message = data.get("message")
 
             st.success("Prediction received from backend.")
-            st.metric(
-                label="Risk Score (probability of Risk_Level = 1)",
-                value=f"{risk_score:.4f}",
-            )
-            st.write(f"**Risk band:** {risk_band}")
+
+            # -------------------
+            # Summary cards (KPIs)
+            # -------------------
+            kpi1, kpi2, kpi3 = st.columns(3)
+
+            with kpi1:
+                st.metric(
+                    label="Risk score",
+                    value=f"{risk_score:.3f}",
+                    help="Model probability that this supplier is high risk (Risk_Level = 1).",
+                )
+
+            with kpi2:
+                st.metric(
+                    label="Risk band",
+                    value=risk_band,
+                    help="Low, Moderate, High or Critical based on the risk score.",
+                )
+
+            with kpi3:
+                st.metric(
+                    label="Previous disruptions",
+                    value=int(previous_disruptions),
+                    help="Number of major disruptions in the past.",
+                )
+
             st.write(f"**Explanation:** {message}")
+
         else:
             st.error(f"API error: {response.status_code} – {response.text}")
+
     except Exception as e:
         st.error(f"Failed to call backend API: {e}")
