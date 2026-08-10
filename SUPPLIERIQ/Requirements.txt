@@ -1,10 +1,10 @@
+fastapi
+uvicorn[standard]
+
 pandas
 numpy
 scikit-learn
 matplotlib
 seaborn
 scipy
-joblib
-fastapi
-uvicorn
-streamlit
+jupyter
