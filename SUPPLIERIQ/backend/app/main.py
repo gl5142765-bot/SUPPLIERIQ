@@ -15,13 +15,11 @@ class SupplierInput(BaseModel):
     delivery_quality_index: float = Field(..., description="Delivery quality index (0–100, higher is better)", example=78)
     supplier_dependency_score: float = Field(..., description="Business dependency (1–5 scale, 5 = highly dependent)", example=3)
 
-@app.get("/health")
-def health_check():
-    return {
-        "status": "ok",
-        "service": "SupplierIQ backend",
-        "detail": "API is running",
-    }
+
+@app.get("/")
+def read_root():
+    return {"message": "SupplierIQ backend is running"}
+
 
 @app.post("/risk-score")
 def predict_risk(input_data: SupplierInput):
