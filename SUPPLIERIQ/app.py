@@ -8,7 +8,6 @@ import os
 # -----------------------------
 
 BACKEND_URL = os.getenv("BACKEND_URL")
-API_URL = f"{BACKEND_URL}/risk-score"
 
 st.set_page_config(
     page_title="SupplierIQ – Risk Dashboard",
