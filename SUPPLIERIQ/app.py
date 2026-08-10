@@ -1,20 +1,20 @@
 import streamlit as st
 import requests
-import pandas as pd  
+import pandas as pd
+import os
 
 # -----------------------------
 # Config
-import os
-
+# -----------------------------
 
 BACKEND_URL = os.getenv("BACKEND_URL")
+API_URL = f"{BACKEND_URL}/predict"
 
 st.set_page_config(
     page_title="SupplierIQ – Risk Dashboard",
     page_icon="📊",
     layout="centered",
     initial_sidebar_state="auto",
-
 )
 
 st.title("SupplierIQ – Supplier Risk Prediction")
