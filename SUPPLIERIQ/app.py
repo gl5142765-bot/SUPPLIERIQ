@@ -4,9 +4,10 @@ import pandas as pd
 
 # -----------------------------
 # Config
-# -----------------------------
+import os
 
-API_URL = "http://127.0.0.1:8000/risk-score"  # update later to AWS URL
+
+BACKEND_URL = os.getenv("BACKEND_URL")
 
 st.set_page_config(
     page_title="SupplierIQ – Risk Dashboard",
