@@ -3,8 +3,13 @@
 import joblib
 import numpy as np
 
-# Load artifacts once at startup
-model = joblib.load("models/supplier_model.joblib")
+from pathlib import Path
+import joblib
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "models" / "supplier_model.joblib"
+
+model = joblib.load(MODEL_PATH)
 
 def get_risk_band(prob: float) -> str:
     if prob < 0.25:
