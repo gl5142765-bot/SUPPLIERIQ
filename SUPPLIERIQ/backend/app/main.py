@@ -3,7 +3,9 @@ from pydantic import BaseModel, Field
 import numpy as np
 from .core import model, get_risk_band, explain_risk_band
 
-app = FastAPI(title="SupplierIQ Backend")
+from fastapi import FastAPI
+
+app = FastAPI()
 
 class SupplierInput(BaseModel):
     financial_stability_score: float = Field(..., description="Financial health score (0–400, higher is better)", example=250)
