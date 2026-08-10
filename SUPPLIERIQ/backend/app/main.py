@@ -3,8 +3,6 @@ from pydantic import BaseModel, Field
 import numpy as np
 from .core import model, get_risk_band, explain_risk_band
 
-from fastapi import FastAPI
-
 app = FastAPI()
 
 class SupplierInput(BaseModel):
