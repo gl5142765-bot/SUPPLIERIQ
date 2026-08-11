@@ -1,4 +1,5 @@
 import os
+
 import requests
 import streamlit as st
 
@@ -52,10 +53,6 @@ st.subheader("Supplier metrics")
 col1, col2 = st.columns(2)
 
 
-# ------------------------------------------------------------
-# LEFT COLUMN
-# ------------------------------------------------------------
-
 with col1:
 
     financial_stability_score = st.slider(
@@ -90,10 +87,6 @@ with col1:
         help="External geopolitical risk (0–100, higher is riskier).",
     )
 
-
-# ------------------------------------------------------------
-# RIGHT COLUMN
-# ------------------------------------------------------------
 
 with col2:
 
@@ -137,11 +130,8 @@ with col2:
 
 st.markdown("---")
 
-if st.button("Predict supplier risk", type="primary"):
 
-    # --------------------------------------------------------
-    # Prepare input data
-    # --------------------------------------------------------
+if st.button("Predict supplier risk", type="primary"):
 
     payload = {
         "financial_stability_score": financial_stability_score,
@@ -154,19 +144,13 @@ if st.button("Predict supplier risk", type="primary"):
         "supplier_dependency_score": supplier_dependency_score,
     }
 
-    # --------------------------------------------------------
-    # Backend endpoint
-    # --------------------------------------------------------
+    try:
 
-     response = requests.post(
-       f"{BACKEND_URL}/risk-score",
-         json=payload,
-         timeout=30,
-      )
-
-        # ----------------------------------------------------
-        # Successful response
-        # ----------------------------------------------------
+        response = requests.post(
+            f"{BACKEND_URL}/risk-score",
+            json=payload,
+            timeout=30,
+        )
 
         if response.status_code == 200:
 
@@ -178,21 +162,15 @@ if st.button("Predict supplier risk", type="primary"):
 
             st.success("Prediction received from backend.")
 
-            # ------------------------------------------------
-            # KPI CARDS
-            # ------------------------------------------------
-
             kpi1, kpi2, kpi3 = st.columns(3)
 
             with kpi1:
+
                 if risk_score is not None:
                     st.metric(
                         label="Risk score",
                         value=f"{float(risk_score):.3f}",
-                        help=(
-                            "Model probability that this supplier "
-                            "belongs to the high-risk class."
-                        ),
+                        help="Model probability of the risky class.",
                     )
                 else:
                     st.metric(
@@ -201,49 +179,33 @@ if st.button("Predict supplier risk", type="primary"):
                     )
 
             with kpi2:
+
                 st.metric(
                     label="Risk band",
                     value=risk_band if risk_band else "N/A",
-                    help=(
-                        "Risk classification returned by the backend."
-                    ),
+                    help="Risk classification returned by the backend.",
                 )
 
             with kpi3:
+
                 st.metric(
                     label="Previous disruptions",
                     value=int(previous_disruptions),
-                    help=(
-                        "Number of major supply disruptions "
-                        "entered above."
-                    ),
+                    help="Number of major supply disruptions.",
                 )
-
-            # ------------------------------------------------
-            # EXPLANATION
-            # ------------------------------------------------
 
             if message:
                 st.info(f"**Explanation:** {message}")
 
-        # ----------------------------------------------------
-        # Rate limited
-        # ----------------------------------------------------
-
         elif response.status_code == 429:
 
             st.warning(
-                "The backend returned **429 – Too Many Requests**. "
-                "Please wait a moment and try again."
+                "The backend returned 429 – Too Many Requests."
             )
 
             st.caption(
                 f"Backend response: {response.text}"
             )
-
-        # ----------------------------------------------------
-        # Validation error
-        # ----------------------------------------------------
 
         elif response.status_code == 422:
 
@@ -254,22 +216,13 @@ if st.button("Predict supplier risk", type="primary"):
 
             st.code(response.text)
 
-        # ----------------------------------------------------
-        # Other API errors
-        # ----------------------------------------------------
-
         else:
 
             st.error(
-                f"Backend API error: "
-                f"{response.status_code}"
+                f"Backend API error: {response.status_code}"
             )
 
             st.code(response.text)
-
-    # --------------------------------------------------------
-    # Connection / request error
-    # --------------------------------------------------------
 
     except requests.exceptions.Timeout:
 
