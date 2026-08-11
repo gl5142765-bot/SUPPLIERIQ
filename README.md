@@ -7,6 +7,10 @@ The project turns raw supplier records into:
 - Model evaluation metrics and confusion matrix.
 - A foundation for an API and dashboard for business users.
 
+🌐 Live Dashboard: https://supplieriq-frontend-production.up.railway.app/
+💻 GitHub Repository: https://github.com/gl5142765-bot/SUPPLIERIQ
+⚙️ Backend API: https://supplieriq-production-2b3b.up.railway.app/
+
 ---
 
 ## Project Structure
