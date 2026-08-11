@@ -19,6 +19,128 @@ st.set_page_config(
 
 
 # ============================================================
+# CUSTOM UI STYLING
+# ============================================================
+
+st.markdown(
+    """
+    <style>
+
+    /* --------------------------------------------------------
+       PREDICT BUTTON
+       -------------------------------------------------------- */
+
+    div[data-testid="stButton"] > button[kind="primary"] {
+        background-color: #B85C5C;
+        color: white;
+        border: 1px solid #B85C5C;
+        border-radius: 10px;
+        padding: 0.55rem 1.2rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
+        background-color: #A94F4F;
+        border-color: #A94F4F;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 1 - FINANCIAL STABILITY
+       Muted Blue
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(1)
+    [role="slider"] {
+        background-color: #5B8DEF !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 2 - ON-TIME DELIVERY
+       Muted Green
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(2)
+    [role="slider"] {
+        background-color: #55A878 !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 3 - DEFECT RATE
+       Muted Orange
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(3)
+    [role="slider"] {
+        background-color: #D98E4A !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 4 - GEOPOLITICAL RISK
+       Muted Purple
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(4)
+    [role="slider"] {
+        background-color: #9B72CF !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 5 - LEAD TIME
+       Teal
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(5)
+    [role="slider"] {
+        background-color: #4F9D9D !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 6 - PREVIOUS DISRUPTIONS
+       Muted Red
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(6)
+    [role="slider"] {
+        background-color: #C75B5B !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 7 - DELIVERY QUALITY
+       Muted Green
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(7)
+    [role="slider"] {
+        background-color: #65A765 !important;
+    }
+
+
+    /* --------------------------------------------------------
+       SLIDER 8 - SUPPLIER DEPENDENCY
+       Muted Gold
+       -------------------------------------------------------- */
+
+    div[data-testid="stSlider"]:nth-of-type(8)
+    [role="slider"] {
+        background-color: #C5A24A !important;
+    }
+
+
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+# ============================================================
 # CHECK BACKEND CONFIGURATION
 # ============================================================
 
