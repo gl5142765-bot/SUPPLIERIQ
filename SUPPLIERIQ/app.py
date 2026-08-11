@@ -159,19 +159,11 @@ if st.button("Predict supplier risk", type="primary"):
     # Backend endpoint
     # --------------------------------------------------------
 
-    api_url = f"{BACKEND_URL}/risk-score"
-
-    # --------------------------------------------------------
-    # Call FastAPI backend
-    # --------------------------------------------------------
-
-    try:
-
-        response = requests.post(
-            api_url,
-            json=payload,
-            timeout=30,
-        )
+     response = requests.post(
+       f"{BACKEND_URL}/risk-score",
+         json=payload,
+         timeout=30,
+      )
 
         # ----------------------------------------------------
         # Successful response
