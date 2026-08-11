@@ -9,6 +9,11 @@ import os
 
 BACKEND_URL = os.getenv("BACKEND_URL")
 
+response = requests.post(
+    f"{BACKEND_URL}/risk-score",
+    json=payload
+)
+
 st.set_page_config(
     page_title="SupplierIQ – Risk Dashboard",
     page_icon="📊",
