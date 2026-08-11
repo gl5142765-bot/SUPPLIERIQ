@@ -6,15 +6,53 @@ from .core import model, get_risk_band, explain_risk_band
 app = FastAPI()
 
 class SupplierInput(BaseModel):
-    financial_stability_score: float = Field(..., description="Financial health score (0–400, higher is better)", example=250)
-    on_time_delivery_rate: float = Field(..., description="On-time delivery rate in percentage (0–100, higher is better)", example=92)
-    defect_rate: float = Field(..., description="Defect rate in percentage of units shipped (0–100, lower is better)", example=4)
-    geopolitical_risk_index: float = Field(..., description="Geopolitical risk index (0–100, higher means more external risk)", example=35)
-    lead_time_days: float = Field(..., description="Average lead time in days (positive, lower is better)", example=28)
-    previous_disruptions: int = Field(..., description="Number of previous major supply disruptions (integer, 0 or more)", example=2)
-    delivery_quality_index: float = Field(..., description="Delivery quality index (0–100, higher is better)", example=78)
-    supplier_dependency_score: float = Field(..., description="Business dependency (1–5 scale, 5 = highly dependent)", example=3)
+    financial_stability_score: float = Field(
+        ...,
+        description="Financial health score (0–100, higher is better)",
+        example=60
+    )
 
+    on_time_delivery_rate: float = Field(
+        ...,
+        description="On-time delivery rate in percentage (0–100, higher is better)",
+        example=80
+    )
+
+    defect_rate: float = Field(
+        ...,
+        description="Defect rate in percentage (0–20, lower is better)",
+        example=5
+    )
+
+    geopolitical_risk_index: float = Field(
+        ...,
+        description="Geopolitical risk index (0–100, higher means more external risk)",
+        example=30
+    )
+
+    lead_time_days: float = Field(
+        ...,
+        description="Average lead time in days (0–90, lower is better)",
+        example=25
+    )
+
+    previous_disruptions: int = Field(
+        ...,
+        description="Number of previous major supply disruptions (0–10)",
+        example=1
+    )
+
+    delivery_quality_index: float = Field(
+        ...,
+        description="Delivery quality index (0–100, higher is better)",
+        example=75
+    )
+
+    supplier_dependency_score: float = Field(
+        ...,
+        description="Supplier dependency score (0–1, higher means more dependent)",
+        example=0.30
+    )
 
 @app.get("/")
 def read_root():
